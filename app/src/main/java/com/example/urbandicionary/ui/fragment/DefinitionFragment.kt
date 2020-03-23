@@ -124,7 +124,7 @@ class DefinitionFragment : DaggerFragment() {
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem?.actionView as SearchView
 
-        searchView.setSearchableInfo(manager.getSearchableInfo(activity!!.componentName))
+        searchView.setSearchableInfo(manager.getSearchableInfo(activity.let { it?.componentName }))
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchView.clearFocus()

@@ -27,14 +27,20 @@ class DefinitionAdapter : RecyclerView.Adapter<DefinitionAdapter.DefinitionListH
 
     override fun onBindViewHolder(holder: DefinitionListHolder, position: Int) {
 
+        val definitionItem  = listDefinitions.let { it->
+            it?.results?.let {
+                it[position]
+            }
+        }
+
         holder.apply {
-            definitionListItemBinding.tvTerm.text = listDefinitions!!.results[position].word
+            definitionListItemBinding.tvTerm.text = definitionItem?.word
             definitionListItemBinding.tvDefinition.text =
-                listDefinitions!!.results[position].definition
+                definitionItem?.definition
             definitionListItemBinding.thumbUpRate.text =
-                listDefinitions!!.results[position].thumbsUp.toString()
+                definitionItem?.thumbsUp.toString()
             definitionListItemBinding.thumbDowmRate.text =
-                listDefinitions!!.results[position].thumbsDown.toString()
+                definitionItem?.thumbsDown.toString()
         }
 
         holder.itemView.apply {
@@ -73,15 +79,15 @@ class DefinitionAdapter : RecyclerView.Adapter<DefinitionAdapter.DefinitionListH
 
         when (order) {
             1 -> {
-                listDefinitions.also {
-                    sortedList = it?.results?.sortedWith(compareBy({ it.thumbsUp }))
+                listDefinitions.also { it ->
+                    sortedList = it?.results?.sortedWith(compareBy { it.thumbsUp })
                     listDefinitions?.results = sortedList!!.toMutableList()
                 }
             }
             2 -> {
 
                 listDefinitions.also {
-                    sortedList = it?.results?.sortedWith(compareBy({ it.thumbsDown }))
+                    sortedList = it?.results?.sortedWith(compareBy { it.thumbsDown })
                     listDefinitions?.results = sortedList!!.toMutableList()
                 }
             }

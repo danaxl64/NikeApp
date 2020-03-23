@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toStartOf="@+id/thumb_dowm"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.062"
-            app:srcCompat="@drawable/ic_like" />
+            app:srcCompat="@drawable/ic_thumb_up" />
 
         <ImageView
             android:id="@+id/thumb_dowm"
@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_dislike" />
+            app:srcCompat="@drawable/ic_thumb_down" />
 
         <TextView
             android:id="@+id/tv_term"

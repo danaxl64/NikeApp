@@ -21,9 +21,9 @@ class MainActivity : DaggerAppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AndroidInjection.inject(this)
+
         if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.setDisplayShowHomeEnabled(true)
+            supportActionBar.let { it?.setDisplayHomeAsUpEnabled(true) }
         }
 
         definitionViewModel = ViewModelProviders.of(this, viewModelFactory).get(DefinitionViewModel::class.java)
